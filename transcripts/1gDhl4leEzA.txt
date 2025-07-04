@@ -1,0 +1,1265 @@
+[Music]
+this video is sponsored by Ella node
+anyone can build on the node whether you
+need a development portfolio to land
+your next job or you're ready to put
+your app into production
+lonoa can get you there for $20 in free
+hosting credit click the link below or
+sign up at lynda.com / traversée hey
+what's going on guys welcome to my
+flutter crash course so in this video
+I'm going to show you how to get flutter
+up and running and talk about it a
+little bit what it is we're gonna look
+at just a couple slides and then jump
+into our project which is going to be a
+simple word pair generator app similar
+to the one that you'll find in the docs
+so if you want to use the fluttered
+documentation kind of as a supplement to
+this project then you can do that and
+this is meant to be a beginner course
+it's meant to be an introduction to
+flutter even your first your very first
+flutter video and projects so let's talk
+about what flutter is it's an SDK or
+software development environment and a
+UI toolkit from Google to build natively
+compiled apps for mobile web and desktop
+although it's mostly used for mobile and
+that's what we're focusing on and what's
+fantastic about flutter is that you can
+build very performant iOS and Android
+apps native apps using only one code
+base rather than the traditional route
+where you'd have either a Java or a
+Kotlin code base for your Android app
+and then you'd have a swift code base
+for your iOS app with flutter not only
+do we have a single code base but it's
+easier to create applications at least
+in my opinion and flutter is
+cross-platform you can use it on Mac
+Windows Linux although if you're
+building for iOS then you want to use a
+Mac and flutter is extremely fast it
+gives you that native field there's
+there's other options for mobile
+development using kind of the web
+technologies you know you have react
+native you have native script ionic some
+of the other ones but flutter is is
+generally faster because it doesn't have
+that extra JavaScript bridge to the OEM
+user interface flutter actually uses the
+native ARM architecture binary which
+makes flutter faster than all of its
+competitors
+so flutter uses a programming language
+called dart which is an object-oriented
+language that uses classes and it's
+optimized for building you eyes and it's
+very fast on all platforms now I realize
+that many of you probably don't know
+dart however if you know any language
+especially JavaScript I don't think
+you'll have a hard time picking it up
+because it actually resembles JavaScript
+in a lot of ways and it even has some
+elements of Java so many people learn
+flutter and dart simultaneously I do
+have plans on creating a dart crash
+course within the next month or so so if
+you're watching this in the future I
+will put the the link to that core that
+crash course in the description there's
+also plenty of other videos and and the
+documentation for dart is really good as
+well if you need help also we'll be
+using the flutter Visual Studio code
+extension which basically I mean any
+method or anything in dart you can just
+hover over and it'll tell you exactly
+what it does okay so don't worry about
+it if you've never even touched dart
+before
+so everything in flutter is essentially
+a widget and flutter widgets are made to
+look exactly like the stock OEM widgets
+pixel for pixel and material design
+comes out of the box with flutter some
+of the common widgets are scaffold which
+is like a high-level widget that can
+have lower-level ones inside of it like
+a container an image and icon even text
+and app bar things like that and there's
+a whole catalog of widgets and the
+documentation there's widgets for like
+animation and motion input accessibility
+pretty much anything that you can think
+of also widgets can be stateless or
+stateful which I'm going to talk about
+in the next two slides and there's a lot
+of similarities here with something like
+react or pretty much any front-end
+JavaScript framework instead of using
+components we use widgets and each
+widget has a build method that can be
+overridden just like in react you have
+render which is a you know a method
+within a component that will render it
+into the UI so there's a lot of
+similarities here so it's it's not the
+most difficult thing in the world to go
+from something like react to flutter all
+right so let's take a look at stateless
+and stateful widgets so stateless
+widgets are just that they're immutable
+basically the their state can't change
+during the runtime of the app and here's
+an example here where we have a class
+called Start screen and extends
+stateless widget and then we're just
+overriding the build method here and
+we're just returning basically an empty
+container widget so for stateful
+components I'm sorry stateful widgets we
+have mutable state that can be redrawn
+on the screen multiple times now in this
+example we have this this Start screen
+class which extends stateful widget and
+what we're doing here is instead of
+overriding a build method we're
+overriding create state and we're
+returning an instance of this start
+screen screen state which we have
+defined down here and down here we're
+overriding our build and we're
+outputting our UI which in this case is
+just an empty container so in most cases
+when you have a stateful widget you're
+gonna have two classes like this one to
+override the create state and then one
+to build your UI okay and if that's
+confusing don't worry about it we're
+gonna get more into that later okay so
+as far as setting up your system there's
+some requirements if you're building iOS
+apps on a Mac you need the latest Xcode
+and that will give you the iOS simulator
+that's what we'll be using to basically
+view our application on Windows you need
+Android studio and if you're on Mac and
+you're building for Android you need
+Android studio the SDK the emulator
+which is the AVD the Android virtual
+device so you need to get that stuff
+installed I already have it on my
+machine but I will show you where to get
+it and how to install it you also need
+the flutter plug-in for Android studio
+and then if you're using vs code you
+want the flutter extension which is
+fantastic it has a ton of intellisense
+features so if you if you're confused
+about what a certain widget is you can
+just hover over it it'll tell you
+exactly what it is and also we can use
+the debugger to run our application
+right in the iOS simulator so it's a
+really nice workflow alright so enough
+with these slides let's jump in and
+let's
+start to build our application alright
+so real quick I just want to go over the
+application will be building although
+this crash course isn't really about the
+application itself it's about learning
+the fundamentals of flutter to be able
+to build you eyes and widgets and stuff
+like that so basically we have a word
+pare generator and it's similar to the
+application and the docks so if you want
+to use that as a supplement you can and
+we just have a list view of different
+word pairs maybe for a server name or a
+user name or something like that
+and we can keep scrolling and it's just
+going to keep generating new word pairs
+and then on the side you can see we have
+these heart icons that we can actually
+click or we can click anywhere in the
+the what are called list tiles and that
+will select them as basically our
+favorites or our saved word pairs that
+we like and then we have this little
+list icon up here in the app bar that we
+can click and it will take us to a new
+page or a new route that shows us all of
+our saved word pairs or our favorite
+word pairs alright so we're gonna be
+dealing with routing we're gonna be
+dealing with a bunch of built-in widgets
+we're gonna deal with custom stateless
+and stateful widgets so we'll learn
+quite a bit in this crash course even
+though this is a pretty pretty useless
+application in general but I think
+you'll learn a lot of fundamentals so
+that you can move on to create your own
+stuff alright so that's it let's go
+ahead and get into it all right so as I
+mentioned before I have my machine set
+up for flutter development but I'm gonna
+go through and show you all the steps
+you need to take to get set up now if
+you go to the flutter dev website and
+you go to Docs and then get started you
+can pick on pick your system here for
+instance windows and it gives you some
+instructions download the SDK and so on
+but I've actually created a gist to
+really just lay things out in a simple
+manner so first thing you want to do is
+download the SDK so from here again
+choose whatever system you're on I'm on
+a Mac so I would choose Mac and download
+the zip file and what that's going to
+give you is a is the SDK it's gonna be a
+folder called flutter and you need to
+put that somewhere on your system
+alright so for instance for me I have
+mine in my home directory so this is my
+home
+users slash Brad traversée and then in a
+folder called utils that's where I put
+that flutter folder now once you put the
+SDK somewhere on your machine you want
+to create a path okay and on Windows I
+don't think it shows you how to do it
+but it's just like if you were to add a
+path for anything else yeah you need to
+add your environment variables which I
+can't show you because I'm not on
+Windows however if you're on Mac what
+you would do is go to your bash profile
+which should be in your home directory
+although it's hidden in on Mac if you
+want to see excuse me hidden files and
+folders you can do command shift period
+and it'll show all of you are hidden
+files okay and just gonna organize this
+and right here is my bash profile now if
+you don't see this if you don't have
+this on your machine you can create it
+by going to your home directory which
+I'm currently in and then you can just
+use the touch command to create the file
+and you can say I've got brash bash
+underscore I'm sorry dot bash underscore
+profile and you can create it okay if
+you don't have it and then you just want
+to edit that so I'm going to just go
+ahead and open it with TextEdit and you
+want to add your path to your flutter
+SDK so I make this a little bigger and
+this is the line that you want to look
+at this is what you want to add so you
+want to add export path equals money
+sign path colon and then the location of
+your the bin folder inside the flutter
+folder which for me is in my users Brad
+Travis e utils flutter bin okay
+obviously your path will be different so
+once you add that and you save this file
+you can restart your terminal and then
+you should be able to run the flutter
+doctor command and what that's going to
+do is give you a summary of kind of your
+dependencies and what you have installed
+and and what you need you can see I have
+all green checks here but you may have
+some red X's so we have flutter we have
+the android plug-in Xcode which I have
+installed you
+the latest version of Xcode if you're on
+a Mac Android studio and the vs code
+extension so I have all this stuff
+installed however you may have some red
+X's and you need to take care of that
+all right so we're gonna move on to what
+else is required so we're at this point
+right here now if you're on Mac you want
+to have the latest version of Xcode I'd
+suggest getting it from the App Store so
+if you just open up the app store and
+search for Xcode you want this right
+here okay you want to grab that and then
+you want to run these two commands right
+here this is also in the docs or is it
+right here
+okay so just run both of these commands
+and that's to configure the Xcode
+command-line tools to the newly
+installed version of Xcode so run those
+and this is and this is only on Mac
+obviously and then once you do that you
+should be able to run your iOS simulator
+so let's try that out we'll go ahead and
+run open - a simulator and there we go
+so we get an iPhone 11 Pro max right on
+our desktop and this is actually what
+we'll be using to look at and test our
+application okay but I'm gonna close
+that for now so at this point if you're
+on a Mac you should have Xcode installed
+and you should be able to run the
+simulator now you want to install
+Android studio so this is for the
+Android apps and on Windows this is
+required so make sure that you know if
+you're on Windows you install this you
+can get it from here
+just go ahead and download it install it
+and then you want to install the flutter
+plugin in Android studio so I'm gonna go
+ahead and just show you how to do that
+real quick I'm just going to open up
+Android studio and from here you want to
+go to configure and then plugins okay
+and then just search for flutter
+and right here you can see there's a
+flutter plug-in and I already have it
+installed so you just want to click
+install all right once you do that you
+want to create a virtual device so you
+go to configure AVD manager which is the
+Android virtual device manager and you
+can see I already have a pixel to set up
+here so what you want to do if you don't
+have any setup already is just create
+new virtual device you can choose from a
+bunch of different devices I just go
+with the default pixel too and then just
+go through click Next and create a new
+device and then once you do that you can
+quick click Play and it should launch
+the emulator alright so now you have an
+Android device and if you're on Windows
+this is what you'll be using to to view
+and test your flutter application ok but
+I'm going to go ahead and just quit out
+of that ok so we have that set up and
+that's pretty much it now you just need
+to install the vs code extension but I'm
+going to do that after we actually
+create our flutter app so to create an
+app we can just run flutter create and
+then whatever we want to call our
+application so I'm gonna go into my dev
+folder where I want to create my
+application and run flutter create and
+let's call this word pair underscore
+generator and that will generate our
+application ok so now I'm just gonna CD
+into word pair generator and I'm gonna
+open it up with vs code and obviously
+you don't have to use vs code you could
+use like Android studio or some other
+text editor IDE but if you install the
+flutter extension so I already have it
+installed looks like there's a reload
+required no go ahead and do that dart
+has been updated ok so I just want to
+show you real quick the extension where
+to go so it installs the dart extension
+or maybe it doesn't maybe you need to
+install that just make sure you have
+both the flutter and the dart extension
+yeah but this so this is the flutter
+extension and it'll allow us to have a
+really nice workflow - - with hot reload
+and all that stuff and then the dart
+right here dart language support so this
+will give you like code highlighting
+snippets stuff like that so just make
+sure you have those two installed all
+right so now we're ready to get started
+so you can see we have all the files
+over here that were generated and in
+order to run this what we can do is go
+down here you see this no device so if I
+click that I now have the option to use
+either my pixel - Android device or my
+iOS simulator I'm gonna use my iOS
+simulator and it's gonna open up it's
+not gonna run the app just yet but it
+will open the simulator and I'm just
+gonna make this a little smaller so we
+can see both at the same time you can
+minimize this and to run this all we
+have to do is go up to the menu which is
+you guys can't see it's off the screen
+but if you go to debug and then start
+debugging and choose your environment
+which is gonna be dart and flutter it
+should launch your application so we
+have a really nice workflow I'm just
+gonna close this up we don't need that
+anymore
+and this will make it so that one when
+we save our files it'll auto reload and
+it's just a really nice workflow okay so
+what this will do is load the basically
+just the boilerplate app so we have just
+an app bar up here we have this you have
+pushed the button this many times with a
+zero and then we have a floating button
+down here and if I click it it'll just
+increment the number by one so this is
+just the little default application that
+they give you but our app is running so
+if we look over here you can see our
+files now as far as the file structure
+the only thing the only place that we
+really need to worry about right now is
+the Lib folder this is where all of our
+code is gonna go you can see there's a
+main dot dart file and this is what is
+running the app this is the the main
+source code now this may look a little
+intimidating but it's it's like 85%
+comments so don't get too intimidated by
+it but basically I mean I'm not gonna go
+through all the code but we're importing
+material design and every dart
+application is gonna have this main
+function okay so void main void just
+means that nothing is returned from it
+and then here we're using an arrow you
+can use basically arrow functions in
+Dart similar to JavaScript arrow
+functions and then we're just calling
+run app and we're initializing this my
+app which we actually have defined right
+here as a stateless widget okay we have
+our build command in here I'm sorry a
+build method and from there we're
+returning material app which allows us
+to use material design widgets okay we
+can do things like set theme data and
+then down here we have a home property
+which is equal to a custom widget called
+my home page and then they proceeded to
+create a stateful widget alright but I'm
+not gonna go through all this I'm just
+gonna get rid of everything actually and
+we're gonna start fresh so first thing
+we're gonna do since we want to use
+material design is import that from
+package colon flutter slash material dot
+Dart
+okay so this allows to use material
+design now like I said every dart Apple
+has a main function which is basically
+like an entry point so we're gonna say
+void because it doesn't return anything
+main and then we can use an arrow for an
+arrow here because it's just a 1 a
+one-line function and we're just calling
+run app okay and then in here
+we could actually pass in directly the
+material app like that however I think
+it's neither to create basically like a
+core or root widget which we'll call my
+app like that and then we'll define that
+by saying class my app and that's gonna
+extends not sextants extends the
+stateless stateless widget class okay
+and then in here we need to run our
+build method or I should say override
+our build method because the stateless
+widget class has a build method and when
+we do this typically you'll see this at
+override like that which isn't required
+but it's just more readable and it shows
+you that you're actually overriding a
+method and then we'll say widget build
+okay and then every build method has a
+build context passed into it so build
+context and then context and then from
+here we're gonna go ahead and return our
+material app all right now just to show
+you real quick if we go to the docs
+let's search for flutter or material
+okay so the material app class which is
+an application that uses material design
+it's a convenience widget that wraps a
+number of widgets that are commonly
+required for material design
+applications so you can see right here
+material app and then there's a whole
+there's a lot of different properties
+you can use but home is basically what's
+going to show on in the UI and typically
+what you'll do is use the scaffold
+widget okay so if we want to look at
+that say flutters
+scaffold so scaffold is basically a high
+level widget where you can have multiple
+lower level widgets inside and there's
+different properties like for the app
+bar you use the app bar widget in the
+body you can use whatever widgets you
+want in this case we're using the center
+widget you can have the you know buttons
+this is a floating action button so
+before we get into scaffold I just want
+to get something up on the page so I'm
+actually going to say for home we'll
+just use a text widget and if I hover
+over this if you hover over any widgets
+it'll tell you exactly what it is so
+this just creates a text widget it can
+also take in a style property and you
+can use what's called a text style
+widget so I'll show you that as well so
+in here we'll just say hello world and
+save it and this should actually run so
+let's minimize this and that's what we
+get which is very ugly kind of the
+default look if we want to we can add in
+a style property here and we can use a
+text style widget and what this takes in
+is a bunch of properties for instance if
+we want to do font size we could say I
+don't know 30 let's do 30 point five and
+for color we could say colors dot and
+then we can use any material design
+colors so for instance we'll say green
+and if I hover over this I believe I
+don't yep so if I hover over this we'll
+see some options here for different
+shades of green so let's say we want
+this right here we could use green
+brackets 400 for our color so let's go
+ahead and save that and there we go okay
+so what we have here is just our main
+widget which is using material app which
+is just showing a text widget with the
+text hello world and then we're using a
+text style widget to add some style to
+that which still looks incredibly ugly
+okay now I don't want to use a text
+widget I just wanted to give you a quick
+example so I'm going to go
+head and get rid of this so we just have
+our home property and from here we're
+going to use scaffold all right and in
+scaffold we can set an app bar property
+and we're going to use an app bar widget
+okay now the app bar widget takes in a
+title and for that title we can't just
+put a string like we can't say it's a
+word pair generator so obviously I mean
+this is giving us an error here
+so string can't be assigned to the
+parameter type it has to be a widget so
+we're gonna use a text widget so we'll
+wrap this in text like that and that
+should be good so if we go ahead and
+save that there we go so we have our app
+bar so in addition to app bar actually I
+want to show you how we can set the
+theme so another property that we can
+have in here I really don't like how vs
+code formats this but I guess we'll deal
+with it so we can set theme and we have
+a theme data widget we can use and let's
+put in here we'll use primary color so
+if we want to set the primary color we
+can use colors dot and let's use we'll
+use purple and let's see we'll do like I
+guess just purple but you can change the
+shade if you want any of these actually
+I kind of like purple 900 let's do that
+so brackets 900 and we'll save
+what did I do wrong here home scaffold
+oh I'm sorry theme does not go in
+scaffold it goes in material app
+directly so we want to put that here
+there we go okay so now you can see that
+the app bar has changed to that deep
+purple so for the body here obviously we
+want to put stuff here so inside the
+scaffold in addition to app bar we're
+gonna have our home property and for now
+I'm going to use a center widget okay
+and if we hover over this it'll tell us
+that it creates a widget that centers
+its child so basically you have a child
+Widgit in here so we can say give it a
+property of child and let's just set
+that to text and we'll just say hello
+world let's see why am I getting this so
+I put home sorry this should be body so
+scaffold takes in body not home home is
+for the material app widget so there we
+go we have hello world so I mean this
+this kind of gives you an idea of how
+you build up your UI it's just it's
+basically it's a widget tree is what it
+is what I want to do now is look at
+packages because we're gonna use a
+package called English words and that's
+going to give us the the core
+functionality of generating these word
+pairs so if I go to my browser and we go
+to its pub dot dev this is dart packages
+and just like you have you know NPM for
+nodejs
+you know you have all your you have
+packages in just about every language so
+dart has its own packages and we're
+going to use English words which is
+right here and this is a package
+containing whatever five thousand used
+English words and some utility functions
+and it just kind of gives you some
+information now to install packages we
+want to add it to our dependencies in
+our pub spec file our pub spec dot yeah
+MOFA
+so we want to take the dependency I'll
+just grab this and go back to our turn
+our editor here and go into our pub spec
+yeah mol file and you'll see that we
+have our dependencies here so we have
+the flutter SDK we have this coppertino
+icons which is included by default what
+we'll actually be using those in a
+little bit and then we want to put our
+English words okay we actually want it
+at this level
+okay so we'll save that and then to
+install this actually it installs it
+automatically with with how we have
+everything set up so we should be able
+to use it but if you don't have you know
+if you're not running the flutter
+extension and the debugger and so on
+then you have to run pub get or flutter
+pub get which is like an NPM install all
+right so let's minimize this and then we
+can close this file and from here we're
+gonna import our English words package
+so we can say import package colon and
+then the name of the package which is
+English words and then it's gonna be
+English words dot dart
+ok so that'll bring the package in and
+we just have this blue line because it's
+unused we haven't used it yet
+so down here in our build I'm gonna go
+ahead and create a variable now this
+variable is going to be a constant
+meaning that it can't be changed or I
+shouldn't say it can't be changed it
+can't be reassigned so I'm gonna use the
+final keyword here we're gonna say final
+and then we'll call this word pair okay
+now final is similar to Const in
+JavaScript so basically you can assign
+like a list which is similar to an array
+and then that and you can change the
+values you just can't directly reassign
+this variable and it can be something
+dynamic like let's say we wanted to use
+date/time dot now or something like that
+which this isn't going to be a static
+value that we always know so it's fine
+to do
+now there is a Const keyword as well but
+you don't want to use it with something
+like this in fact we're gonna get an
+error and you can see right here Kant's
+variables must be initialized with a
+constant value so basically when you
+know the value when you if you're always
+gonna know this value you can use Const
+but usually you're gonna use final okay
+if you're gonna use one at all and then
+we're gonna just check that's not what
+we want here what we want to do is use
+the word pair object which comes with
+the English words package and then
+there's some actually there's only one
+method I think on this called random and
+what that will do is it'll generate a
+random word pair in fact if I hover over
+it it'll tell us creates a single word
+pair randomly so for now down here let's
+just replace inside the text widget
+we'll replace this static string of
+hello world with our variable of word
+pair and then there's some methods
+attached to that to how we want it to be
+displayed we could do as lowercase
+Pascal case I'm going to use Pascal case
+which is it'll start with an upper case
+and then each word after that will start
+with an upper case
+okay so we'll save that and now you can
+see I get bunch beds so it's gonna
+create just a random word pair if I
+reload a Pierrot I click the reload icon
+we get on to cure click it again we get
+trunk rod so it just generates basically
+a single word pair now for this
+application we want a whole list of them
+in a ListView later on we're also going
+to be able to favorite a word pair and
+have a separate page where we can view
+our favorites so instead of for the home
+property right here in material app
+instead of just adding our scaffold here
+I'm gonna call a custom widget that
+we're gonna create called random words
+so let's see material app ends here
+so everything within this home property
+I'm going to just get rid of and we're
+gonna have this call random words which
+we haven't created yet so let's go down
+here and let's create a class
+called random words and this is gonna
+take care of the state so this is gonna
+override the create state so we need to
+extends state full widget and we're
+going to override and then we're gonna
+have another class called random words
+state and we're overriding create state
+and we're gonna call random words state
+okay and that's really all we have to do
+in this particular class so now we're
+gonna create the class random words
+State and this is where we handle all
+our UI stuff and this has to extends
+state and inside brackets we want to put
+our random words okay so this is where
+our build will go so it's a widget build
+takes a build context and let's return
+here a scaffold widget okay so within
+this scaffold we're gonna have our app
+bar because remember we took away the
+app bar and stuff up here we're calling
+random words directly for the home
+property so let's see we're gonna have
+our app bar which is obviously going to
+be an app bar widget which takes in a
+title property and for that title
+property we're gonna have a text widget
+and let's just say a word pair generator
+semicolon there all right so if I save
+this okay so it's still working we have
+our app bar so for the body just to test
+it out we'll just say we'll put a text
+widget here and say hello okay so we get
+hello obviously this isn't what we want
+what we want to have is what's called
+the ListView so I'm actually going to
+create a new widget that will hold our
+ListView so instead of that just this
+text widget of Hello inside the body
+let's say underscore build list and then
+we're gonna go above our build here and
+let's say widget underscore build list
+and then we want to have our ListView
+now I'm gonna just pull up the docs real
+quick so flutter ListView and a list
+view is the most commonly used scrolling
+widget it displays its children one
+after another in a scroll direction so
+something like this in this example it's
+a ListView and there's some padding so
+for padding we're using the edge in sets
+widget and we have a children property
+which just contains containers and
+inside the container we have some
+properties like height color and so on
+and then we have a center widget with a
+child widget of a text widget with entry
+a entry by entry see in fact we could
+grab this and we could go ahead and
+return paste that in just how to
+semicolon down here and then if we take
+a look at our app there we go so we just
+have basically a static ListView now we
+don't want this to be static we want
+this to be a dynamic list of random word
+pairs so in order to do that we're going
+to use the Builder method okay in fact
+if we look it's just search for a
+builder so right here we can use this
+dot builder and then we can have a
+property called item builder which is
+basically like an
+iterator okay it takes in the context
+and index and by the way you can use
+static types like this like int index so
+this has to be an int I haven't been
+doing that I probably should have
+mentioned that in the beginning but yeah
+you can you can add types to your
+variables and functions and stuff like
+that I just haven't been doing it so
+anyway this is what we're gonna do is
+turn this into a builder or use the
+Builder method so that we can use
+dynamic data but before we do that let's
+create a variable appear our property
+called
+random word pairs and we can get these
+generated using the English words
+package that we're using remember we
+used word pair up above up here which we
+don't even need this anymore I can get
+rid of this but we called this word pair
+random well we can actually get a list
+of word pairs by doing it this way okay
+we want to add just some brackets here
+which defines this is a list
+okay so representation of a combination
+of two words and then a list or urn
+array I guess arrays are called lists in
+Dart
+so that will generate the list now we
+want to iterate through that list and
+output list items okay list items of
+list tiles each one of these is actually
+called a tile list tile so padding let's
+see I'm going to actually change that to
+16 and then instead of children we're
+going to use that item builder property
+which is a function so item builder and
+then we can get rid of this widget and
+then everything within the brackets and
+the brackets themselves and let's say
+context and item
+okay so basically we're gonna iterate
+through the items now basically what we
+want to have is the word pair and then a
+divider and then word pair divider and
+so on so to do that we're just gonna do
+a quick if statement and see if the
+divider is odd there's a property called
+is odd and if that's true then we're
+going to return a material design
+divider okay and if we hover over that
+you'll see creates a material design
+divider you do have some stuff you can
+add to it like height and thickness and
+so on but we're just going to keep the
+default okay and then next thing we want
+to do is create our index so we're gonna
+say final index and we're gonna set this
+to our item and basically we want this
+to calculate the number of word pairs
+that are in the ListView minus the
+divider widgets and we do that like this
+okay so we don't want the dividers
+included here and then I want to be able
+to generate new word pairs as we scroll
+down so we'll just generate ten new word
+pairs so let's say if the index is
+greater than or equal to the random word
+pairs length just like in JavaScript we
+have a length property for lists or for
+a raise then we're gonna take random
+word pairs and we're gonna call a method
+called
+add all and inside at all we're gonna
+call a function called generate word
+pairs which is available because of that
+English words package that we're using
+and then we can add on to that a method
+called take so the and then the amount
+that we want to take our or create I
+guess which would be 10 okay
+let's see what's the problem here
+I mean a builder isn't defined oh I
+forgot to add dot builder so it
+shouldn't be just returned list view it
+should be list view dot builder which
+contains the item builder this function
+has a return type of divider yes so this
+item builder needs to actually return
+something and what we want to return is
+actually a list tile for each one okay
+each of those items is a list tile and
+I'm gonna put that in a separate widget
+called build row so inside the item
+builder at the very end we're gonna go
+ahead and return underscore build row
+and then we want to just pass in what we
+want each row to have which of course is
+going to be the random word pair so
+random word pairs and then the current
+index will get passed in okay and then
+we'll go right under that widget and
+create build row which takes in a pair
+okay and we can even add here word pair
+because that's what this is
+let's see yeah so widget build grow and
+then in here we're gonna return a list
+tile which is basically a row if we
+hover over this to see what it says
+doesn't give us much information create
+it's basically just one of the rows in
+the list view and then that takes in a
+widget or it takes in a property of
+title which we could add a text widget
+to and I could just say hello and if I
+save that we just get a ListView with a
+bunch of list tiles that say hello and
+you can see the divider between each one
+because we basically said if the item is
+odd then we want it to be a divider but
+obviously we don't want to say hello we
+want to pass in whatever the pair is
+it's being passed in right here
+okay the current index so we'll just go
+ahead and replace this with pair dot and
+then we want it to display as Pascal
+case and I just want to add some style I
+want to make it a little bigger so we'll
+say style and let's set that to a text
+style widget and we'll set the font size
+to 18 okay we'll save that and there we
+go so now we have ListView and in each
+list style widget we have a text widget
+that has the word pair okay random word
+pair and then for style we have a text
+style widget so you can see that a
+flutter app is just a bunch of widgets
+okay the UI is just a whole bunch of
+widgets and if I scroll it'll keep going
+and it'll keep generating new widgets
+and it's very performant okay because
+right here we're just generating more so
+that's that's it I mean yeah so that's
+all we can create a dynamic ListView now
+I want to add some functionality here I
+want to have an icon on each one on this
+side where we can favorite
+or are like certain word pairs and then
+we'll have a separate page because I do
+want to show you how we can have is a
+second page where it shows all of our
+favorites alright so let's get into that
+now one thing I would like to do before
+we do that actually is move our random
+words widget into a separate file and
+include that rather than having
+everything in this one
+single file so inside Lib let's create a
+new file called random underscore words
+dot dart okay and then we're gonna need
+this we're going to need both of these
+imports so I'm gonna copy those and put
+those in there and then we're not going
+to need this English words here anymore
+what we will do is import the random
+words the random words
+file so from here let's say dot slash
+random words dart and then I'm gonna
+take both of these classes I'm gonna
+take those and move those to our random
+words dot darts and save that and then
+go back here and save that let's see
+what's this going oh I forgot my
+semicolon all right so now we're gonna
+go back to our random words and we need
+a new variable our new property up at
+the top here so let's go under random
+word pairs and we need a place to store
+our saved word pairs okay so basically
+we're gonna have a cons when we check on
+the heart it's gonna get stored in save
+word pairs which is going to be a set so
+let's say saved word pairs which is
+going to equal a set of word pairs
+okay we need parentheses here so
+basically a set is a collection of
+objects where each object can only
+appear once so you can't have multiple
+of the same objects and that's fine
+because we don't want multiple saved
+word pairs all right so now that we've
+done that we have this initialize let's
+go down to our build row because that's
+where we're gonna be working for the
+most part in terms of the functionality
+in order to click the icon and show the
+icon and so on so in here let's go above
+our list tile and create a variable
+called already saved and we're gonna set
+that to our saved word pairs and see if
+it contains that the current pair which
+is passed in here okay so each one the
+build row represents each one of these
+so we're gonna look at whatever this is
+and see if it's contained in saved word
+pairs which we just defined above all
+right and then down here we want to have
+our icon so let's see we're gonna go I
+don't like how they vs code formatted
+this so in the list style after the
+title which ends title no after the text
+sorry which ends here yeah let's put
+that over there and put a comma here and
+then we want to have a property called
+trailing okay which means we can put
+something over here we want an icon so
+we want an icon widget and in here I
+could just say icons dot and then
+there's a for the heart icon it's called
+favorite so if I save that we just get a
+bunch of heart icons now the icon needs
+to be conditional right it needs to be
+read if it's saved and then basically
+blank if it's not so instead of just
+putting a hard-coded icon I'm going to
+take that already saved value which will
+be either true or false and use
+ternary and say if so then we want icons
+dot favorites else then we want icons
+dot and we're gonna use favorites border
+which is basically like like an empty
+heart it's not filled in gray but we do
+want to add a color if it's saved right
+if it's already saved we want it to be
+red so we're gonna specify color which
+is also conditional depending on already
+saved so if it is saved then we're gonna
+use colors dot red else then it's gonna
+be null no color so let's save that and
+now we get a bunch of blank hearts so we
+need the functionality where we click on
+a heart and we have an event fire off
+and we basically either add or remove
+this item to already saved so we're
+gonna go underneath trailing so let's
+say we want to be I really don't like
+how this is formatted so we have
+trailing no so underneath this we're
+gonna put on tap okay which is just that
+it's when when this icon is tapped
+we're gonna run a function and this is
+where we're going to actually change the
+state we're gonna use set state and set
+state takes in a function and we want to
+check to see if this item is already
+saved okay so if it's already saved then
+we're gonna take our saved word pairs
+which is where it's stored and we're
+gonna remove okay if we click it because
+we're gonna be able to toggle our saved
+items else then we're gonna take the
+saved word pairs and we're going to add
+the pair okay and the pair being
+whatever the current iteration is
+whatever is passed in right here
+alright so let's save that and if we go
+over here if I click even if I just
+click anywhere in here it doesn't have
+to be on the actual icon you'll see that
+it turns red so it's getting
+to this already I'm sorry it's getting
+added to this saved word pairs okay if I
+click it again it should toggle it and
+unsaved it so we're actually using state
+here now the last thing I want to do is
+I want to have a separate page that
+shows us the ones that are saved because
+if we go like way down here and click
+one you know we don't want to have to
+just search for them so we want a
+separate page that lists our favorites
+all right so let's do that we're gonna
+create a little button up here to be
+able to do that so down where we have
+the app bar in the the build method here
+in addition to title let's put a comma
+here because we're gonna add on to this
+actually let's put you see so this is
+more readable put this here and then
+right under the title let's have actions
+and actions we're going to define widget
+and then open up some square brackets
+okay and in these square brackets let's
+put a comma here we want to put an icon
+button okay which is just another widget
+and inside here it takes a property of
+icon and we're gonna set that to an icon
+widget which takes in whatever icon we
+want to use I'm going to use the list
+icon so icons dot lists and then after
+that we want to put on pressed so what
+happens when we actually press this
+we're gonna call a function called push
+saved okay and then I'll just create
+that function right up here so void
+because it doesn't it's not going to
+return anything and then push saved
+alright and I'll just save that and now
+you can see that we have the the actual
+icon up here and when we click that or
+when we tap that or press it whatever
+you want to call it it's going to call
+this function so in here
+we basically want to navigate to a
+different route on the stack so your
+home page this page here is the bottom
+route in the stack and you can use a
+navigator class to basically add another
+add another route on top of it what's
+called a mere material page route so
+we're gonna say navigator dot of our
+context and then push ok so we're going
+to push on to the stack and then here
+what we want to push is a material page
+route and material page route has a
+function called builder okay so I want
+to set that to a function and that takes
+in a build context and in here is
+basically what you want to show on this
+new route and I just want to show you
+real quick this is the Navigator class
+documentation so it's a widget that
+manages a set of child widgets with a
+stack discipline mobile ads typically
+apps typically reveal their contents
+fullscreen they're called screens or
+pages and flutter these elements are
+called routes and they're managed by a
+navigator widget the Navigator manages a
+stack of route objects and provides
+methods for managing the stack like push
+and pull and pop let's say so down here
+it says it's right here to push a new
+route onto the stack you can create an
+instance of material page route with a
+builder function that's what I just did
+that creates whatever you want to appear
+on the screen and then here they just
+have a simple example where they have a
+center widget with a text widget and so
+on but what we're gonna do is create a
+list of our saved word pairs alright so
+here we're gonna create a variable let's
+say final tiles so we're creating a list
+tile actually we're creating an iterable
+so let's say iterable
+Liss tiles and we're gonna set this to
+our saved word pairs and we're gonna use
+the math method here okay so we can map
+through this and then in here we want
+another set of parentheses because we
+need a function function gets passed
+into map and for each one it's gonna be
+a pair and it's a word pair okay and
+then from here we want to return a list
+style and a list tile takes in a title
+which you're gonna say text a text
+widget and it's gonna take in whatever
+whatever pair is and then we're gonna
+display it as Pascal case we'll add some
+styles so we want to use a text style
+widget here and let's do font size and
+set that to 16 because we want this to
+look as much like the home page as
+possible you need semicolons here okay
+so this builder has to return something
+so let's see builder ends right here so
+we want to go down here and we want to
+create our list with dividers okay
+remember on right here on the home page
+we have these dividers so we can do this
+let's say final divided actually let's
+give this a type of list which is a
+widget and set this divided to our list
+tile which has a method called divide
+tiles okay so we're gonna call this
+divide tiles and if we hover over this
+it says it adds a one pixel border in
+between each tile and it will use the
+theme color and so on unless unless
+you'd provide a different color but
+that's what we want to call and this
+takes in a context which we're passing
+in the context from up here and then it
+also takes in tiles
+which we have
+right here okay so we have our list tile
+here so let's see that's just put a
+semicolon here and then finally we have
+to actually call to list and if we hover
+over that you'll see that it creates a
+list containing the elements of this
+iterable okay the elements are in
+iteration order the list is fixed length
+if growable is false all right and then
+finally we want to return a scaffold
+widget so we're going to go under the
+two lists here and we're going to return
+from our builder function a scaffold and
+in here we're gonna pass in an app bar
+because remember this is a new route or
+a new page and we're gonna have an app
+bar widget and this takes in a title and
+we're gonna have a text widget as the
+title and it's gonna say saved word
+pairs and let's see after the app bar we
+have our body and the body is gonna be a
+ListView component widget sorry and then
+this can take in a children property
+which is going to be our divided
+variable okay our divided list and I
+think that's it but save gets full-auto
+formatted and if we click that there we
+go so you can see all of our saved word
+pairs if I uncheck some of these will
+uncheck dark mine and warm
+Eze and go back now we have just these
+two all right so this gives you a good
+example of how we can keep State in our
+application go back there we go all
+right so it's it's not the you know the
+most useful app in the world but I
+wanted to do something that was more
+than just some you know static static
+list or whatever just showing you like
+UI components and widgets and actually
+having some logic so hopefully you at
+least
+learn the fundamentals and learned how
+to create stateless and stateful widgets
+and learned about you know scaffold and
+app bars and all that stuff and how to
+add some logic list views list styles
+and and so on so as far as publishing to
+a device like creating an app for the
+App Store you can look at
+let's see flutter iOS build so this page
+here will tell you how to do that you
+need to register your app on the App
+Store connect and you need to take some
+steps and preparations for that and you
+can also search for flutter Android
+build and some steps to to go through
+that as well okay but I'm not going to
+do this in this course obviously this is
+just a beginners crash course alright so
+that's it hopefully you enjoyed this and
+I'll see you in the next video

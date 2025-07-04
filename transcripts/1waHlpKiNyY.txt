@@ -1,0 +1,296 @@
+welcome to this course on the practical
+aspects of deep learning as now you've
+learned how to implement a neural
+network in this week you learn the
+practical aspects of how to make your
+neural network work well ranging from
+things like hyper parameter tuning to
+how to set of your data - how to make
+sure your optimization algorithm runs
+quickly so you get your learning
+algorithm to learn in a reasonable time
+in this first we will first talk about
+how the cellular machine learning
+problem they will talk about
+regularization and we'll talk about some
+tricks for making sure your neural
+network implementation is correct with
+that let's get started making good
+choices in how you set up your training
+development and test sets can make a
+huge difference in helping you quickly
+find a good high performance your
+network when training on your network
+you have to make a lot of decisions such
+as how many layers with your new network
+have and how many hidden units do you
+want each layer to have and what's the
+learning rate and what are the
+activation functions you want to use for
+the different layers when you're
+starting on a new application is almost
+impossible to correctly guess the right
+values for all of these and for other
+high performance a choices on your first
+attempt so in practice applying machine
+learning is a highly iterative process
+in which you often start with an idea
+such as you want to build a new network
+of a certain number of layers a certain
+number of units may be on certain data
+set and so on and then you just have the
+code up in trying it by running your
+code you run an experiment on the get
+back a result that tells you how well
+this particular network or this fluid
+configuration works and based on the
+outcome of you might then refine your
+ideas and change your choices and maybe
+keep iterating in order to try to find a
+better and a better neural network today
+deep learning has found great success in
+a lot of areas ranging from natural
+language processing to computer vision
+to speech recognition to a lot of
+applications on also structured data and
+structured data includes everything from
+advertisement to
+websearch which isn't just internet
+search engines is also for example
+shopping websites or really any website
+that wants to deliver great search
+results when you enter terms into the
+search bar
+- computer security - logistics such as
+figuring out where to send drivers to
+pick up and drop off things - many more
+so what I've seen is that sometimes a
+researcher with a lot of experience in
+NLP might enter you know might try to do
+something in computer vision or maybe a
+researcher with a lot of experience in
+speech recognition might you know jump
+in and try to do something on
+advertising or someone from security
+might want to jump and do something on
+logistics and what I've seen is that
+intuitions from one domain or from one
+application area often do not transfer
+to other application areas and the best
+choices may depend on the amount of data
+you have the number of input features
+you have your computer configuration and
+whether you're training on GPUs or CPUs
+and it's so exactly what configuration
+of GPUs and CPUs and many other things
+so for a lot of applications I think is
+almost impossible even very experienced
+deep learning people find it almost
+impossible to correctly guess the best
+choice of hyper parameters the very
+first time and so today apply deep
+learning is a very iterative process
+where you just have to go around this
+cycle many times to hopefully find a
+good choice of network for your
+application so one of the things they'll
+determine how quickly you can make
+progress is how efficiently you can go
+around the cycle and setting up your
+data sets well in terms of your train
+development and test sets can meet you
+much more efficient at that so if this
+is your training data let's draw that as
+a big box then traditionally you might
+take all the data you have and carve off
+some portion of it to be your training
+set some portion of it to be your
+hold out draws validation sets and this
+is sometimes also called the development
+set and for brevity I'm just going to
+call this the dev set but all of these
+terms being roughly the same thing and
+then you might carve out some final
+portion of it to be your test set and so
+the work though is that you keep on
+training algorithms on your training
+sites and use your dev set or your hold
+on trial validation set to see which of
+many different models performs best on
+your dev set and then after having done
+this long enough when you have a final
+model do you want to evaluate you can
+take the best model you have found and
+evaluate it on your test set in order to
+get a unbiased estimate of how well your
+algorithm is doing so in the previous
+era of machine learning it was common
+practice to take all your data and split
+it according to maybe a 70/30 percent um
+in terms of a people often talked about
+the 70/30 train tested if you don't have
+an explicit dev set or maybe you know a
+60 20 20 percent split now in terms of
+60 percent trained 20% dev and 20
+percent test
+and several years ago this was widely
+considered best practice in machine
+learning if you have you know maybe 100
+examples in total or maybe a thousand
+examples in total maybe after you know
+10,000 examples these sorts of ratios
+were perfectly reasonable rules of thumb
+but in the modern Big Data error where
+for example you might have a million
+examples in total then the trend is that
+you're Devin 10 sets have been becoming
+a much smaller percentage of the total
+because remember the goal of the dev
+sets that the development set is that
+you're going to test different Avram's
+on it and see whichever works better so
+the death set just needs to be big
+enough for you to evaluate say two
+different algorithm courses or ten
+different averages and quickly decide
+which one is doing better and you might
+not need a whole 20 percent of your day
+for that so for example we have a
+million chin examples you might decide
+that just having ten thousand examples
+in your death set is more than enough to
+evaluate you know which one or two
+algorithms does better and in a similar
+vein the main goal of your test set is
+given your final classifier to give you
+a pretty confident estimate of how well
+it's doing and again if you have a
+million examples maybe you might decide
+that 10,000 examples is more than enough
+in order to evaluate a single qualifier
+and give you a good estimate of how well
+it's doing so in this example where you
+have a million examples if you need just
+10,000 for your Devon 10,000 for your
+test your ratio would be more like
+10,000 is 1% of 1 million so you have
+98% trained 1% death 1% yes and I've
+also seen applications where if you have
+even more than million examples you
+might end up with you know 99.5% trained
+and 0.25 percent death 0.25 percent test
+or maybe a 0.4 percent deaf 0.1 percent
+test so just a recap when setting up
+your machine learning problem more often
+set up into a trained F and test sets
+and if you have a relatively small data
+set these traditional ratios might be
+okay but if you have a much larger data
+set is also fine to set your Devon test
+sets to be much smaller than you know
+20% or even want to 10% of your data
+will give more specific guidelines on
+the sizes of Devon test sets later in
+this specialization one other trend
+we're seeing in the era of modern deep
+learning is that more and more people
+train on mismatched training test
+distributions let's say you're building
+an app that lets users upload than all
+the pictures and your goal is to find
+pictures of cats in order to show your
+users maybe all your users in canvas
+maybe your training set comes from cat
+pictures downloaded off the internet of
+then your Devon headset
+might comprise cat pictures from users
+using our app
+Samira training centers while the
+pictures traveled off the internet but
+the Devin testers are pictures uploaded
+by users
+turns out of all the web pages have very
+high resolution very professional very
+nicely framed pictures of cats but maybe
+your users are uploading you know
+blurrier lower res images just taken
+with a cell phone camera in a more
+casual condition and so these two
+distributions of data may be different
+the rule of thumb might encourage you to
+follow in this case is to make sure that
+deep dev and test sets come from the
+same distribution we'll see more about
+this particular guideline as well but
+because you will be using the death set
+you value a lot of different models and
+trying really hard to improve
+performance on a death set is nice if
+your death set comes from the same
+distribution as your test set but
+because deep learning algorithms are
+such a huge hunger for training data one
+trend I'm seeing is that you might use
+all sorts of creative tactics such as
+crawling webpages in order to acquire a
+much bigger training set than you would
+otherwise have even if part of the cause
+of that is then that your training set
+data might not come from the same
+distribution as your dev and test set
+but you find that so long as you follow
+this rule of thumb that progress in your
+machine learning algorithm will be
+faster and I'll give a more detailed
+explanation for this tutorial some dates
+and descritization as well finally it
+might be okay to not have a test set
+remember to go of the test set is to
+give you a unbiased estimate of the
+performance of your final network of the
+network that you selected but you don't
+need that unbiased estimate then it
+might be okay to not have a test set so
+what you do if you have only a death
+step and all the test size is you
+trained on the training set and then you
+try different model architectures
+evaluate them on the death set and then
+use that to iterate and try to get to a
+good model because you fit today to the
+dev set there's no long surgeon unbiased
+estimate of performance but if you don't
+need one that might be perfectly fine
+in the machine learning world when you
+have just a train on a deaf set but no
+separate test set
+most people will call this the training
+set and they will call the death set the
+test set but what they actually end up
+doing is using the test set as a holdout
+cross-validation Center which maybe
+isn't completely a great use of
+terminology because they're then
+overfitting to the chip set so when the
+team tells you that they have only a
+train and a test set you know I would
+just be cautious and think do they
+really have a trade deficits because
+they're overfitting to the test set
+culturally it might be difficult to
+change some of these teams terminology
+and get them to call it a train death
+sets rather than train test set even
+though I think calling it a train and
+development set would be more correct
+terminology and this is actually okay
+practice if you don't need a completely
+unbiased estimate of the performance of
+your algorithm so having set up a train
+death and test set to allow you to
+iterate more quickly it will also allow
+you to more efficiently measure that
+bias and variance of your algorithm so
+they can more efficiently select ways to
+improve your algorithm let's start to
+talk about that in the next video
